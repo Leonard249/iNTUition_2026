@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            width: 400px;
+            padding: 24px;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+        .welcome-icon {
+            font-size: 48px;
+            text-align: center;
+            margin: 20px 0;
+        }
+        button {
+            width: 100%;
+            padding: 12px;
+            margin: 8px 0;
+            background: #3b82f6;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="welcome-icon">🎤</div>
+    <h2>Welcome to A11y Assistant!</h2>
+    <p>Your AI overlay assistant is now installed.</p>
+    
+    <h3>How to use:</h3>
+    <ol>
+        <li>Go to any website</li>
+        <li>Click the 🎤 button in bottom right</li>
+        <li>Say "hey assistant" or click "Analyze Page"</li>
+        <li>Use voice or click actions to navigate</li>
+    </ol>
+    
+    <h3>Keyboard Shortcuts:</h3>
+    <ul>
+        <li><strong>Ctrl+Shift+A</strong>: Activate assistant</li>
+        <li><strong>Ctrl+Shift+S</strong>: Analyze page</li>
+    </ul>
+    
+    <button id="get-started">Get Started</button>
+    
+    <script>
+        document.getElementById('get-started').addEventListener('click', () => {
+            chrome.tabs.create({ url: 'https://google.com' });
+            window.close();
+        });
+    </script>
+</body>
+</html>
