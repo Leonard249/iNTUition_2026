@@ -2,11 +2,11 @@
 
 # Backend Setup
 
-cd backend
-uv sync
-ollama pull qwen2.5vl:7b
-ollama serve
-uv run run.py
+1. cd backend
+2. uv sync
+3. ollama pull qwen2.5vl:7b
+4. ollama serve
+5. uv run run.py
 
 # Backend Testing (Optional)
 
