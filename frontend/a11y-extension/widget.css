@@ -1,0 +1,181 @@
+/* widget.css - Styles for A11y Overlay Widget */
+
+/* RESET for widget elements to prevent conflicts */
+#a11y-overlay-root,
+#a11y-overlay-root * {
+    all: initial;
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif !important;
+}
+
+/* Main container */
+#a11y-overlay-root {
+    position: relative;
+    z-index: 2147483647;
+    pointer-events: none;
+}
+
+/* Trigger Button */
+.a11y-trigger-btn {
+    position: fixed !important;
+    bottom: 24px !important;
+    right: 24px !important;
+    width: 60px !important;
+    height: 60px !important;
+    border-radius: 50% !important;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+    border: none !important;
+    color: white !important;
+    font-size: 24px !important;
+    cursor: pointer !important;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25) !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    z-index: 2147483647 !important;
+    user-select: none !important;
+    -webkit-tap-highlight-color: transparent !important;
+    pointer-events: auto !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    line-height: 1 !important;
+}
+
+.a11y-trigger-btn:hover {
+    transform: scale(1.1) !important;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.35) !important;
+}
+
+.a11y-trigger-btn.listening {
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%) !important;
+    animation: a11y-pulse 1.5s infinite !important;
+}
+
+/* Control Panel */
+.a11y-control-panel {
+    position: fixed !important;
+    bottom: 100px !important;
+    right: 24px !important;
+    width: 320px !important;
+    max-height: 400px !important;
+    background: white !important;
+    border-radius: 12px !important;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2) !important;
+    padding: 0 !important;
+    z-index: 2147483646 !important;
+    display: none !important;
+    overflow: hidden !important;
+    pointer-events: auto !important;
+    margin: 0 !important;
+}
+
+.a11y-control-panel.active {
+    display: block !important;
+    animation: a11y-slideUp 0.3s ease !important;
+}
+
+/* Panel Header */
+.a11y-panel-header {
+    padding: 16px 20px !important;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+    color: white !important;
+    margin: 0 !important;
+}
+
+.a11y-panel-title {
+    margin: 0 !important;
+    font-size: 16px !important;
+    font-weight: 600 !important;
+    line-height: 1.3 !important;
+    color: white !important;
+}
+
+.a11y-panel-subtitle {
+    margin: 4px 0 0 0 !important;
+    font-size: 12px !important;
+    opacity: 0.9 !important;
+    line-height: 1.4 !important;
+    color: white !important;
+}
+
+/* Panel Content */
+.a11y-panel-content {
+    padding: 16px !important;
+    max-height: 400px !important;
+    overflow-y: auto !important;
+    margin: 0 !important;
+}
+
+/* Action Buttons */
+.a11y-action-btn {
+    display: block !important;
+    width: 100% !important;
+    padding: 12px 16px !important;
+    margin: 8px 0 !important;
+    background: #f8f9fa !important;
+    border: 2px solid #e5e7eb !important;
+    border-radius: 8px !important;
+    text-align: left !important;
+    cursor: pointer !important;
+    font-size: 14px !important;
+    color: #374151 !important;
+    transition: all 0.2s !important;
+    line-height: 1.4 !important;
+}
+
+.a11y-action-btn:hover {
+    background: #e5e7eb !important;
+    border-color: #d1d5db !important;
+}
+
+.a11y-action-btn.primary {
+    background: #3b82f6 !important;
+    border-color: #2563eb !important;
+    color: white !important;
+    font-weight: 500 !important;
+}
+
+/* Highlight Box */
+.a11y-highlight-box {
+    position: fixed !important;
+    pointer-events: none !important;
+    z-index: 2147483645 !important;
+    border: 3px solid #3b82f6 !important;
+    background: rgba(59, 130, 246, 0.1) !important;
+    border-radius: 6px !important;
+    animation: a11y-pulse-border 2s infinite !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* ANIMATIONS */
+@keyframes a11y-pulse {
+    0%, 100% { opacity: 1 !important; }
+    50% { opacity: 0.7 !important; }
+}
+
+@keyframes a11y-pulse-border {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.7) !important; }
+    70% { box-shadow: 0 0 0 10px rgba(59, 130, 246, 0) !important; }
+}
+
+@keyframes a11y-slideUp {
+    from { transform: translateY(20px) !important; opacity: 0 !important; }
+    to { transform: translateY(0) !important; opacity: 1 !important; }
+}
+
+/* Scrollbar */
+.a11y-panel-content::-webkit-scrollbar {
+    width: 6px !important;
+}
+
+.a11y-panel-content::-webkit-scrollbar-track {
+    background: #f1f1f1 !important;
+    border-radius: 3px !important;
+}
+
+.a11y-panel-content::-webkit-scrollbar-thumb {
+    background: #c1c1c1 !important;
+    border-radius: 3px !important;
+}
