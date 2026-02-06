@@ -176,8 +176,10 @@ class A11yOverlay {
                 logging: false,
                 backgroundColor: '#ffffff'
             }).then(canvas => {
-                const screenshot = canvas.toDataURL('image/jpeg', 0.7);
-                resolve(screenshot);
+                // Convert canvas to BLOB instead of base64
+                canvas.toBlob((blob) => {
+                    resolve(blob);  // Returns Blob object
+                }, 'image/jpeg', 0.7);
             }).catch(reject);
         });
     }
@@ -422,8 +424,14 @@ class A11yOverlay {
     
     async sendToBackend(endpoint, data) {
         const formData = new FormData();
+        
         Object.keys(data).forEach(key => {
-            formData.append(key, data[key]);
+            if (key === 'screenshot' && data[key] instanceof Blob) {
+                // Add blob as file
+                formData.append('screenshot', data[key], 'screenshot.jpg');
+            } else {
+                formData.append(key, data[key]);
+            }
         });
         
         const response = await fetch(this.config.backendUrl + endpoint, {
